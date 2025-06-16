@@ -1,0 +1,304 @@
+/* Base Styles */
+:root {
+  --amazon-orange: #ff9900;
+  --flipkart-blue: #047bd5;
+  --croma-teal: #00aeef;
+  --ebay-blue: #0064d2;
+  --success-green: #28a745;
+  --error-red: #e74c3c;
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+  --bg-light: #f5f7fa;
+  --card-white: #ffffff;
+  --border-gray: #e0e0e0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--card-white);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  color: var(--text-dark);
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--amazon-orange), var(--flipkart-blue), var(--croma-teal), var(--ebay-blue));
+  border-radius: 2px;
+}
+
+h2 {
+  color: var(--text-dark);
+  margin: 20px 0;
+  font-size: 1.5rem;
+}
+
+/* Search Form */
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+input[type="text"] {
+  padding: 14px 20px;
+  width: 60%;
+  border: 2px solid var(--border-gray);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--flipkart-blue);
+  box-shadow: 0 0 0 3px rgba(4, 123, 213, 0.2);
+}
+
+button {
+  padding: 14px 28px;
+  background-color: var(--flipkart-blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(4, 123, 213, 0.3);
+}
+
+button:hover {
+  background-color: #0368b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(4, 123, 213, 0.4);
+}
+
+/* Results Container */
+.results-container {
+  margin-top: 30px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Result Cards */
+.result-card {
+  background: var(--card-white);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+/* Platform Specific Styling */
+.amazon::before { background-color: var(--amazon-orange); }
+.flipkart::before { background-color: var(--flipkart-blue); }
+.croma::before { background-color: var(--croma-teal); }
+.ebay::before { background-color: var(--ebay-blue); }
+
+.site-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.site-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  object-fit: contain;
+}
+
+.site-header h3 {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+}
+
+/* Product Info */
+.product-name {
+  font-weight: 600;
+  margin: 15px 0;
+  color: var(--text-dark);
+  font-size: 1.05rem;
+  line-height: 1.4;
+  min-height: 60px;
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-price {
+  color: var(--success-green);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+/* Buttons */
+.visit-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: var(--text-dark);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+}
+
+.visit-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Platform Specific Buttons */
+.amazon .visit-btn { background-color: var(--amazon-orange); }
+.flipkart .visit-btn { background-color: var(--flipkart-blue); }
+.croma .visit-btn { background-color: var(--croma-teal); }
+.ebay .visit-btn { background-color: var(--ebay-blue); }
+
+/* Error Messages */
+.error {
+  color: var(--error-red);
+  font-style: italic;
+  margin: 15px 0;
+  text-align: center;
+}
+
+/* Loading Animation */
+.loading {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid var(--flipkart-blue);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  form {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+  }
+  
+  button {
+    width: 100%;
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-name {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .site-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .product-price {
+    font-size: 1.3rem;
+  }
+}
